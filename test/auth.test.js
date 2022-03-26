@@ -7,10 +7,22 @@ const userCredentials = {
   email: "sponge@bob.com",
   password: "garyTheSnail",
 };
-// now let's login the user before we run any tests
+
 const authenticatedUser = request.agent(app);
+
 // eslint-disable-next-line no-undef
-before(function(done) {
+it("should singup the user", function(done) {
+  authenticatedUser
+      .post("/api/kyc/user/create")
+      .send(userCredentials)
+      .end(function(err, response) {
+        expect(response.statusCode).to.equal(201);
+        done();
+      });
+});
+
+// eslint-disable-next-line no-undef
+it("should login the user", function(done) {
   authenticatedUser
       .post("/api/login")
       .send(userCredentials)
@@ -19,4 +31,5 @@ before(function(done) {
         done();
       });
 });
+
 
