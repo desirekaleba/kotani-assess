@@ -1,5 +1,5 @@
 const expect = require("chai").expect;
-const app = require("../index");
+const api = require("../index");
 const request = require("supertest");
 
 
@@ -8,7 +8,7 @@ const userCredentials = {
   password: "garyTheSnail",
 };
 
-const authenticatedUser = request.agent(app);
+const authenticatedUser = request.agent(api);
 
 // eslint-disable-next-line no-undef
 it("should singup the user", function(done) {
