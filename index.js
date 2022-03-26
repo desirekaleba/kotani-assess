@@ -8,9 +8,12 @@
 //   response.send("Hello from Firebase!");
 // });
 const functions = require("firebase-functions");
-const app = require("express")();
-const firebaseConfig = require("./utils/config");
 const firebase = require("firebase");
+
+const app = require("express")();
+
+const firebaseConfig = require("./utils/config");
+
 firebase.initializeApp(firebaseConfig);// Initializing Firebase
 const {login, kycUserCreate} = require("./handlers/auth");
 
